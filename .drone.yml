@@ -1,0 +1,9 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: test
+    image: mcr.microsoft.com/dotnet/sdk:3.1
+    commands:
+      - dotnet test
