@@ -1,27 +1,31 @@
-﻿open System
-open Common
+﻿open Common
 
 let sum = 2020
+
+let compare (array: int[]) =
+    Array.sum(array) = sum
+
+let results data =
+    data
+    |> Seq.filter compare
+    |> Seq.head
+    |> Array.reduce (fun a b -> a * b)
+
 let lines = Files.read "Input.txt" int
 
-let compare (a,b) =
-    a + b = sum
-
-let options = seq { 
+let pairs = seq { 
     for a in lines do
         for b in lines do
-            yield (a, b)  }
+            yield [|a; b|]  }
 
-let results =
-    options
-    |> Seq.filter compare
-
-let result =
-    results
-    |> Seq.head
-    |> fun (a, b) -> a * b
+let triplets = seq { 
+    for a in lines do
+        for b in lines do
+            for c in lines do
+                yield [|a; b; c|]  }
 
 [<EntryPoint>]
 let main _ =
-    Console.WriteLine(result)
+    printfn "Pairs: %d" (results pairs)
+    printfn "Triplets: %d" (results triplets)
     0 

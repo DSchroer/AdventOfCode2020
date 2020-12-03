@@ -25,16 +25,21 @@ let parse line =
 
 let input = Files.read "Passwords.txt" parse
 
-let validate (policy: Policy) (password: string) =
+let validPasswords policyFn =
+    input
+    |>  Seq.filter (fun (policy, password) -> policyFn policy password)
+
+let policy1 (policy: Policy) (password: string) =
     let count = Seq.filter (fun a -> a = policy.Letter) password |> Seq.length
     count >= policy.Lowest && count <= policy.Highest
 
-let validPasswords =
-    input
-    |>  Seq.filter (fun (policy, password) -> validate policy password)
+let policy2 (policy: Policy) (password: string) =
+    let a = password.[policy.Lowest - 1] = policy.Letter
+    let b = password.[policy.Highest - 1] = policy.Letter
+    a <> b
 
 [<EntryPoint>]
 let main _ =
-    let results = Seq.length validPasswords
-    printfn "%d" results
-    0 // return an integer exit code
+    printfn "Policy1: %d" (validPasswords policy1 |> Seq.length)
+    printfn "Policy2: %d" (validPasswords policy2 |> Seq.length)
+    0
