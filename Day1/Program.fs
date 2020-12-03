@@ -15,15 +15,15 @@ let results data =
 
 let lines() = Files.read "Input.txt" int
 
-let pairs() = seq { 
-    for a in lines() do
-        for b in lines() do
+let pairs lines = seq { 
+    for a in lines do
+        for b in lines do
             yield [|a; b|]  }
 
-let triplets() = seq { 
-    for a in lines() do
-        for b in lines() do
-            for c in lines() do
+let triplets lines = seq { 
+    for a in lines do
+        for b in lines do
+            for c in lines do
                 yield [|a; b; c|]  }
 
 
