@@ -11,6 +11,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Common", "Common\Common.fsp
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day3", "Day3\Day3.fsproj", "{91EB43E9-4996-4124-9AE8-B55BC59B06EE}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day4", "Day4\Day4.fsproj", "{BB665818-A7AB-4B80-87D6-A70C21EEC976}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{91EB43E9-4996-4124-9AE8-B55BC59B06EE}.Release|x64.Build.0 = Release|Any CPU
 		{91EB43E9-4996-4124-9AE8-B55BC59B06EE}.Release|x86.ActiveCfg = Release|Any CPU
 		{91EB43E9-4996-4124-9AE8-B55BC59B06EE}.Release|x86.Build.0 = Release|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Debug|x64.Build.0 = Debug|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Debug|x86.Build.0 = Debug|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Release|x64.ActiveCfg = Release|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Release|x64.Build.0 = Release|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB665818-A7AB-4B80-87D6-A70C21EEC976}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
