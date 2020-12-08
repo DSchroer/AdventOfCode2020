@@ -31,4 +31,4 @@ let ``Can list golden containers``() =
 let ``Gold contains how many bags``() =
     let rules = Parser.parseAllRules()
     let canHold = Rules.holdsHowMany (rules |> Array.ofSeq) "shiny gold"
-    Assert.Equal(326, canHold)
+    Assert.Equal(5635, canHold)
