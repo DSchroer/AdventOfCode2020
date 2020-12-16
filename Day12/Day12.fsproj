@@ -8,8 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Ship.fs" />
         <Compile Include="Tests.fs" />
-        <Content Include="Floorplan.txt" />
+        <Content Include="Instructions.txt" />
     </ItemGroup>
 
     <ItemGroup>
