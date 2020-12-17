@@ -4,6 +4,7 @@ open System
 open Xunit
 open Common.Files
 open Common.Regex
+open FSharp.Collections.ParallelSeq
 
 type Range(start: int, finish: int) =
     member this.Start = start
@@ -15,7 +16,10 @@ type Rule(name: string, range1: Range, range2: Range) =
     member this.Name = name
     member this.ValidFor x = range1.ValidFor x || range2.ValidFor x
     member this.ValidFor (all: int seq) =
-        all |> Seq.map (fun f -> this.ValidFor f) |> Seq.reduce(&&)
+        let invalid = all |> Seq.tryFind (fun f -> not (this.ValidFor f))
+        match invalid with
+        | Some _ -> false
+        | None -> true
     override this.GetHashCode () = this.Name.GetHashCode()
     override this.Equals obj = this.Name = (obj :?> Rule).Name
     interface IComparable with
@@ -67,17 +71,21 @@ let ``Can remove invalid rules`` () =
     Assert.NotEmpty(validTickets)
     
 
-[<Fact(Skip = "Takes too long to run")>]
+[<Fact(Skip = "Takes too long")>]
 let ``Can determine best rule`` () =
     let (rules, personal, tickets) = parseInput()
+    
     let validTickets = tickets |> Seq.filter (fun t -> t.IsValid rules)
-    let ruleSets = [0..(rules |> Seq.length) - 1] |> List.map (fun i -> 
-        let ticketValues = validTickets |> Seq.map (fun t -> t.At i)
-        Seq.filter (fun (r: Rule) ->
-            (r.ValidFor ticketValues)) rules |> Seq.toArray)
+    let ruleSets = {0..(rules |> Seq.length) - 1}
+                |> Seq.map (fun i -> 
+                    let ticketValues = validTickets |> Seq.map (fun t -> t.At i)
+                    
+                    rules
+                    |> Seq.filter (fun (r: Rule) -> (r.ValidFor ticketValues))
+                    |> Seq.toArray)
                 |> Seq.indexed
                 |> Seq.toArray
-                |> Seq.sortBy (fun (i, r) -> r.Length)
+                |> Seq.sortBy (fun (_, r) -> r.Length)
     
     let mutable known = Map.empty<int, Rule>
     let mutable seen = Set.empty<Rule>
@@ -91,4 +99,5 @@ let ``Can determine best rule`` () =
                 |> Seq.filter (fun (_, r) -> r.Name.StartsWith("departure"))
                 |> Seq.map (fun (i, _) -> int64 (personal.At i))
                 |> Seq.reduce (*)
-    Assert.Equal(0L, total)
+    
+    Assert.Equal(514662805187L, total)
