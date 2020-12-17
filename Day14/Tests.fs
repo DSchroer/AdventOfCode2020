@@ -68,12 +68,6 @@ type RuntimeV2() =
         |> Map.toList
         |> List.map (fun (k, v) -> v)
         |> List.fold (fun a b -> a + int64 b) 0L
-    
-[<Fact>]
-let ``Masks work`` () =
-    let m1 = "1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    Assert.Equal(uint64 64, applyMask m1 (uint64 0))
-
 
 let parseInst line =
     match line with
@@ -105,7 +99,7 @@ let ``Can run docking system`` () =
     let r = Runtime ()
     for i in input() do
         r.Exec i
-    Assert.Equal(342749663413L, r.Sum ())
+    Assert.Equal(6317049172545L, r.Sum ())
    
     
 [<Fact>]
@@ -138,4 +132,4 @@ let ``Can run docking system V2`` () =
     let r = RuntimeV2 ()
     for i in input() do
         r.Exec i
-    Assert.Equal(6317049172545L, r.Sum ())
+    Assert.Equal(3434009980379L, r.Sum ())
