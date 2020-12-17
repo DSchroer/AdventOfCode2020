@@ -138,4 +138,4 @@ let ``Can run docking system V2`` () =
     let r = RuntimeV2 ()
     for i in input() do
         r.Exec i
-    Assert.Equal(342749663413L, r.Sum ())
+    Assert.Equal(6317049172545L, r.Sum ())
