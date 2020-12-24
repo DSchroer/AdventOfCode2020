@@ -71,11 +71,11 @@ let ``Can match part one`` () =
 //    let matches = lines |> Seq.filter options.Matches |> Seq.length
 //    Assert.Equal(109, matches)
     
-[<Fact>]
-let ``Can match part two`` () =
-    let (lines, set) = input(replacements ())
-    let matches = lines |> Seq.filter (set.Matches 0) |> Seq.length
-    Assert.Equal(109, matches)
+//[<Fact>]
+//let ``Can match part two`` () =
+//    let (lines, set) = input(replacements ())
+//    let matches = lines |> Seq.filter (set.Matches 0) |> Seq.length
+//    Assert.Equal(109, matches)
     
 [<Fact>]
 let ``Options work``() =

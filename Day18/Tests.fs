@@ -31,7 +31,7 @@ let tokenize input =
 [<Fact>]
 let ``Can run``() =
     let res = tokenize "1 + 2 * 3 + 4 * 5 + 6"
-    Assert.Equal(71L, res)
+    Assert.Equal(231L, res)
     
 [<Fact>]
 let ``Can run homework``() =

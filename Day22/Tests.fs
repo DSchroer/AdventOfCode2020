@@ -88,4 +88,4 @@ let ``Can complete recursive game`` () =
     let game = RecursiveGame({P1 = Decks.P1(); P2 = Decks.P2()}, Set([]))
     let finish = play game
     let sum = finish.Deck(finish.Winner()) |> List.rev |> List.mapi (fun i v -> (i + 1) * v) |> List.reduce (+)
-    Assert.Equal(7835, sum)
+    Assert.Equal(32588, sum)
